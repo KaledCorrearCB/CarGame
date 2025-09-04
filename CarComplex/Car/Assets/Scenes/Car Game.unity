@@ -2410,6 +2410,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2caa504066c434e488a64b687a12e1f0, type: 2}
   - {fileID: 11400000, guid: 63d737babeb95a74099cdb08742434ee, type: 2}
   - {fileID: 11400000, guid: 3ac4e5b0c649701479bd2f847877e3cc, type: 2}
+  - {fileID: 11400000, guid: 1b9714af533832f4ebf489d7d1f43fd8, type: 2}
   spawnCarPosition: {fileID: 1286623220}
   carImage: {fileID: 821041579}
   carName: {fileID: 1378025696}
