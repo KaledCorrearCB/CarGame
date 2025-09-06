@@ -8,6 +8,7 @@ public class CarMovement : MonoBehaviour
     private Rigidbody _rb;
     private InputManager _inputM;
     private GasMechanic gasMechanic;
+    public float OriginalSpeed { get; set; }
 
     // Variable del Scriptable Object del carro.
     [Header("Values")]
@@ -34,7 +35,7 @@ public class CarMovement : MonoBehaviour
         _inputM = GetComponent<InputManager>();
 
         // Cambia el centro de gravedad del carro
-        _rb.centerOfMass = new Vector3(0, -0.5f, 0);
+        _rb.centerOfMass = new Vector3(0, -1f, 0);
         gasMechanic = GetComponent<GasMechanic>();
     }
 
