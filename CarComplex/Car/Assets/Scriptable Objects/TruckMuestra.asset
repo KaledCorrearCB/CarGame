@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carImage: {fileID: 21300000, guid: b6b039af8acb06a4989dde69d417c4d7, type: 3}
   carName: Truck
-  speed: 800
-  brakeForce: 1200
+  speed: 1500
+  brakeForce: 1700
   angle: 20
-  carPrefab: {fileID: 8310793411445710924, guid: c63d6df85379de4418762dce09ac6ca8,
+  carPrefab: {fileID: 1328945910833846769, guid: 610bd28646895ea44a536ce96cdc1d4e,
     type: 3}
