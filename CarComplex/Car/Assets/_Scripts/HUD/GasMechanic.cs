@@ -11,6 +11,7 @@ public class GasMechanic : MonoBehaviour
         if (rb.velocity.magnitude > 0.1)
         {
             fuel -= Time.deltaTime;
+            if (fuel < 0) fuel = 0; // Esto es para evitar que aparezca valores negativos.
             HUDManager.Instance.NeedleRotation(fuel);
         }
         //Debug.Log(fuel);

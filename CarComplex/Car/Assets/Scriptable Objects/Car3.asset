@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carImage: {fileID: 21300000, guid: 95d50b2c4c08eac46a3cb4931e003c1b, type: 3}
   carName: Pejelagarto
-  speed: 500
-  brakeForce: 600
+  speed: 800
+  brakeForce: 1000
   angle: 15
-  carPrefab: {fileID: 5591007676384574705, guid: 35bccf3d837ec6c4bb91f17c6d78f63b,
+  carPrefab: {fileID: 1328945910833846769, guid: d2f42c7e21d81d94b8f0940f98169b3e,
     type: 3}

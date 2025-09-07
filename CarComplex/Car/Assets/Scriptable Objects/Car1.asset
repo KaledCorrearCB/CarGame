@@ -17,5 +17,5 @@ MonoBehaviour:
   speed: 700
   brakeForce: 1000
   angle: 20
-  carPrefab: {fileID: 1874918252790703905, guid: 9866a795489dced47b99585adef0ddc9,
+  carPrefab: {fileID: 1328945910833846769, guid: 8fe20f4ae91643f458a963edc63c7822,
     type: 3}

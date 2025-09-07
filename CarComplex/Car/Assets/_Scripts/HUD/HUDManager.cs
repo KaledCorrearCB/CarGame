@@ -16,6 +16,9 @@ public class HUDManager : MonoBehaviour
     // Se pone  una variable nueva con la cual se pueda guardar el texto
     [Header("Score")]
     public TextMeshProUGUI scoreText;
+    // Variable para texto tiempo
+    [Header("Timer")]
+    public TextMeshProUGUI timerText;
     private void Awake()
     {
         if (Instance == null)
@@ -42,6 +45,13 @@ public class HUDManager : MonoBehaviour
     public void UpdateScore(int newScore)
     {
         scoreText.text = "Puntos: " + newScore;
+    }
+
+    public void UpdateTimerUI(float timeValue)
+    {
+        int minutes = Mathf.FloorToInt(timeValue / 60);
+        int seconds = Mathf.FloorToInt(timeValue % 60);
+        timerText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
 }
