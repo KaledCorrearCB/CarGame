@@ -13,7 +13,7 @@ public class GasMechanic : MonoBehaviour
             fuel -= Time.deltaTime;
             HUDManager.Instance.NeedleRotation(fuel);
         }
-        Debug.Log(fuel);
+        //Debug.Log(fuel);
     }
 
     public void Refuel(float amount)

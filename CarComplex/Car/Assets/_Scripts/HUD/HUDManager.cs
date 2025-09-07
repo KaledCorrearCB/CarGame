@@ -13,6 +13,9 @@ public class HUDManager : MonoBehaviour
     [Header("Gas")] 
     public float minRotation = -70f;
     public float maxRotation = 70f;
+    // Se pone  una variable nueva con la cual se pueda guardar el texto
+    [Header("Score")]
+    public TextMeshProUGUI scoreText;
     private void Awake()
     {
         if (Instance == null)
@@ -34,5 +37,11 @@ public class HUDManager : MonoBehaviour
         float fuelPercent = fuel / maxFuel;
         float angle = Mathf.Lerp(minRotation, maxRotation, fuelPercent);
         gasNeedle.transform.localRotation = Quaternion.Euler(0, 0, angle);
-    }    
+    }
+    // se crea el metodo que escribe el puntaje
+    public void UpdateScore(int newScore)
+    {
+        scoreText.text = "Puntos: " + newScore;
+    }
+
 }
