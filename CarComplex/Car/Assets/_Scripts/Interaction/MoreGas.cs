@@ -1,10 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
+Ôªøusing UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class MoreGas : MonoBehaviour
 {
-    public float refillAmount = 30f; // cu·nta gasolina da este objeto
+    public float refillAmount = 30f;
+
+    [HideInInspector] public PowerUpSpawner spawner; // ‚Üê referencia al spawner
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,7 +14,11 @@ public class MoreGas : MonoBehaviour
         if (gas != null)
         {
             gas.Refuel(refillAmount);
-            Destroy(gameObject); // desaparece el bidÛn
+            Destroy(gameObject);
+
+            // Avisamos al spawner que se recolect√≥
+            if (spawner != null)
+                spawner.NotificarRecoleccion();
         }
     }
 }

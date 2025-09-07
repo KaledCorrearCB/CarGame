@@ -1,15 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
+Ôªøusing UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using System.Collections;
 
 public class SpeedPill : MonoBehaviour
 {
     [Header("Speed pill")]
-    public float multiplier = 1.5f;   // Factor de multiplicaciÛn de velocidad
-    public float duration = 5f;     // DuraciÛn del efecto
+    public float multiplier = 1.5f;   // Factor de multiplicaci√≥n de velocidad
+    public float duration = 5f;      // Duraci√≥n del efecto
 
-    private static bool isBoostActive = false;  // ProtecciÛn contra stacking
-    private static Coroutine activeCoroutine;   // Referencia a la corutina en curso
+    private static bool isBoostActive = false;
+    private static Coroutine activeCoroutine;
+
+    [HideInInspector] public PowerUpSpawner spawner; // ‚Üê referencia al spawner
 
     private void OnTriggerEnter(Collider car)
     {
@@ -18,33 +21,32 @@ public class SpeedPill : MonoBehaviour
 
         CarSO carSO = carMovement.car;
 
-        // Si ya hay un boost en curso, reiniciamos la corutina (extiende duraciÛn)
         if (isBoostActive && activeCoroutine != null)
         {
             carMovement.StopCoroutine(activeCoroutine);
-            carSO.speed = carMovement.OriginalSpeed; // aseguro resetear antes de reaplicar
+            carSO.speed = carMovement.OriginalSpeed;
         }
 
-        // Arrancamos la nueva corutina
         activeCoroutine = carMovement.StartCoroutine(SpeedUpdate(carSO, carMovement));
+
         Destroy(gameObject);
+
+        // Avisamos al spawner que se recolect√≥
+        if (spawner != null)
+            spawner.NotificarRecoleccion();
     }
 
     IEnumerator SpeedUpdate(CarSO carSO, CarMovement carMovement)
     {
         isBoostActive = true;
 
-        // Guardamos el original si a˙n no estaba guardado
         if (carMovement.OriginalSpeed == 0)
             carMovement.OriginalSpeed = carSO.speed;
 
-        // Aplicamos boost
         carSO.speed = carMovement.OriginalSpeed * multiplier;
 
-        // Esperamos duraciÛn
         yield return new WaitForSeconds(duration);
 
-        // Restauramos
         carSO.speed = carMovement.OriginalSpeed;
         isBoostActive = false;
         activeCoroutine = null;
