@@ -73,6 +73,19 @@ public class CarMovement : MonoBehaviour
 
     public void Motor()
     {
+
+        // SI no hay gasolina entonces el carro no puede moverse
+        if (gasMechanic.fuel <= 0)
+        {
+            frontLeftCollider.motorTorque = 0;
+            frontRightCollider.motorTorque = 0;
+            backLeftCollider.motorTorque = 0;
+            backRightCollider.motorTorque = 0;
+
+            return; // salimos para que no aplique movimiento
+        }
+
+
         // Asignar al torque de motor el input vertical por la velocidad.
         frontLeftCollider.motorTorque = _inputM.input.y * car.speed;
         frontRightCollider.motorTorque = _inputM.input.y * car.speed;
